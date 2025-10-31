@@ -1,0 +1,17 @@
+{
+  "name": "my-mcp-servers",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Collection of MCP servers for development workflow",
+  "scripts": {
+    "start:db": "node database-server.js",
+    "start:git": "node git-server.js",
+    "start:api": "node api-testing-server.js",
+    "start:devtools": "node devtools-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "pg": "^8.11.3",
+    "mysql2": "^3.6.5"
+  }
+}

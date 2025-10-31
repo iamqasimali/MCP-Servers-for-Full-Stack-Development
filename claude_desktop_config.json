@@ -1,0 +1,36 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "/Users/healthwire/.nvm/versions/node/v22.19.0/bin/node",
+      "args": ["/Users/healthwire/Projects/mcp-server/server.js"]
+    },
+    "database": {
+      "command": "/Users/healthwire/.nvm/versions/node/v22.19.0/bin/node",
+      "args": ["/Users/healthwire/Projects/mcp-server/database-server.js"],
+      "env": {
+        "PG_HOST": "localhost",
+        "PG_PORT": "5432",
+        "PG_DATABASE": "your_database",
+        "PG_USER": "your_user",
+        "PG_PASSWORD": "your_password",
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_DATABASE": "your_database",
+        "MYSQL_USER": "root",
+        "MYSQL_PASSWORD": "your_password"
+      }
+    },
+    "git": {
+      "command": "/Users/healthwire/.nvm/versions/node/v22.19.0/bin/node",
+      "args": ["/Users/healthwire/Projects/mcp-server/git-server.js"]
+    },
+    "api-testing": {
+      "command": "/Users/healthwire/.nvm/versions/node/v22.19.0/bin/node",
+      "args": ["/Users/healthwire/Projects/mcp-server/api-testing-server.js"]
+    },
+    "devtools": {
+      "command": "/Users/healthwire/.nvm/versions/node/v22.19.0/bin/node",
+      "args": ["/Users/healthwire/Projects/mcp-server/devtools-server.js"]
+    }
+  }
+}
