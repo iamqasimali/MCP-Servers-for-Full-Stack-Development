@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    // The filesystem server is commented out because server.js is not found in your project.
+    // "filesystem": {
+    //   "command": "node",
+    //   "args": ["/Users/healthwire/Projects/mcp-full-stack-dev/server.js"]
+    // },
+    "database": {
+      "command": "node",
+      "args": ["/Users/healthwire/Projects/mcp-full-stack-dev/database-server.js"],
+      "env": {
+        "PG_HOST": "localhost",
+        "PG_PORT": "5432",
+        "PG_DATABASE": "your_database",
+        "PG_USER": "your_user",
+        "PG_PASSWORD": "your_password",
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_DATABASE": "your_database",
+        "MYSQL_USER": "root",
+        "MYSQL_PASSWORD": "your_password"
+      }
+    },
+    "git": {
+      "command": "node",
+      "args": ["/Users/healthwire/Projects/mcp-full-stack-dev/git-server.js"]
+    },
+    "api-testing": {
+      "command": "node",
+      "args": ["/Users/healthwire/Projects/mcp-full-stack-dev/api-testing-server.js"]
+    },
+    "devtools": {
+      "command": "node",
+      "args": ["/Users/healthwire/Projects/mcp-full-stack-dev/devtools-server.js"]
+    }
+  }
+}

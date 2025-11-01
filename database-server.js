@@ -137,6 +137,35 @@ async function getMysqlPool() {
   return mysqlPool;
 }
 
+function formatResultAsMarkdown(result) {
+  const { rows, rowCount, command } = result;
+
+  if (!rows || rows.length === 0) {
+    if (command && command !== 'SELECT') {
+      return `Command '${command}' executed successfully. ${rowCount || 0} row(s) affected.`;
+    }
+    return "Query executed successfully. No rows returned.";
+  }
+
+  const headers = Object.keys(rows[0]);
+  const headerRow = `| ${headers.join(" | ")} |`;
+  const separatorRow = `| ${headers.map(() => "---").join(" | ")} |`;
+
+  const body = rows
+    .map((row) => {
+      const values = headers.map((header) => {
+        const value = row[header];
+        if (value === null) return "NULL";
+        if (typeof value === "object") return JSON.stringify(value);
+        return String(value).replace(/\|/g, "\\|"); // Escape pipe characters
+      });
+      return `| ${values.join(" | ")} |`;
+    })
+    .join("\n");
+
+  return `${headerRow}\n${separatorRow}\n${body}\n\nTotal rows: ${rows.length}`;
+}
+
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
 
@@ -164,7 +193,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text",
-              text: JSON.stringify(result, null, 2),
+              text: formatResultAsMarkdown(result),
             },
           ],
         };
